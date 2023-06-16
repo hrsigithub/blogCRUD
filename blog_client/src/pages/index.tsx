@@ -15,6 +15,7 @@ type Props = {
 
 // Next.js はビルド時に getStaticProps から返される props を使ってプリレンダリングします。
 // getStaticProps はHome()の外でexportを利用して使用する。
+// ISR
 export async function getStaticProps() {
   const res = await fetch("http://127.0.0.1:3001/api/v1/posts");
   const posts = await res.json();
@@ -35,7 +36,7 @@ export default function Home({ posts }: Props) {
     <>
       <div className={styles.homeContainer}>
         <Headline />
-        <Posts postsData={posts}/>
+        <Posts postsData={posts} />
       </div>
     </>
   );

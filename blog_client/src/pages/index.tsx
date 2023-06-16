@@ -3,6 +3,7 @@
 
 // const inter = Inter({ subsets: ['latin'] })
 
+import Headline from '@/components/Headline';
 import styles from '@/styles/Home.module.css'
 import { Post } from "@/types";
 
@@ -32,10 +33,7 @@ export default function Home({ posts }: Props) {
   return (
     <>
       <div className={styles.homeContainer}>
-        <h2>Rails & Next.js Blog</h2>
-        <Link href="/create-post" className={styles.createButton}>
-          Create new Post
-        </Link>
+        <Headline></Headline>
         <div>
           {posts.map((post: Post) => (
             <div key={post.id} className={styles.postCard}>

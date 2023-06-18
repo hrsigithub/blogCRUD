@@ -13,7 +13,9 @@ const Post = ({ post }: Props) => {
         <h2>{post.title}</h2>
       </Link>
       <p>{post.content}</p>
-      <button className={styles.editButton}>編集</button>
+      <Link href={`/edit-post/${post.id}`}>
+        <button className={styles.editButton}>編集</button>
+      </Link>
       <button className={styles.deleteButton}>削除</button>
     </div>
   );

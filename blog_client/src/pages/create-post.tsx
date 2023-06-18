@@ -1,15 +1,32 @@
 import styles from "@/styles/Home.module.css";
+import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { BASE_URL } from "@/const";
+import { useRouter } from "next/router";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const router = useRouter();
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     //  リロード防止
     e.preventDefault();
 
     console.log(title, content);
+
+    try {
+      await axios.post(BASE_URL + "/posts", {
+        title,
+        content,
+      });
+
+      alert("投稿したわ。");
+
+      router.push("/")
+    } catch (e) {
+      alert("投稿に失敗したわ。");
+    }
   };
 
   return (

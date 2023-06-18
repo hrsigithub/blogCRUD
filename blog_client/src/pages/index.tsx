@@ -6,8 +6,8 @@ import Headline from "@/components/Headline";
 import Posts from "@/components/Posts/Posts";
 import styles from "@/styles/Home.module.css";
 import { PostType } from "@/types";
+import { BASE_URL } from "@/const"
 
-// import Link from "next/link";
 
 type Props = {
   posts: PostType[];
@@ -17,7 +17,7 @@ type Props = {
 // getStaticProps はHome()の外でexportを利用して使用する。
 // ISR
 export async function getStaticProps() {
-  const res = await fetch("http://127.0.0.1:3001/api/v1/posts");
+  const res = await fetch(BASE_URL + "/posts");
   const posts = await res.json();
 
   console.log(posts);

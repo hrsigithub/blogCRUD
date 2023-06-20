@@ -1,6 +1,7 @@
 import { PostType } from "@/types";
 import { useRouter } from "next/router";
 import styles from "@/styles/Post.module.css";
+import { BASE_URL } from "@/const";
 
 type Props = {
   post: PostType;
@@ -28,7 +29,7 @@ export async function getStaticPaths() {
 
 // ISR
 export async function getStaticProps({ params }: { params: { id: string } }) {
-  const res = await fetch(`http://127.0.0.1:3001/api/v1/posts/${params.id}`);
+  const res = await fetch(BASE_URL + `/posts/${params.id}`);
   const post = await res.json();
 
   console.log(post);
